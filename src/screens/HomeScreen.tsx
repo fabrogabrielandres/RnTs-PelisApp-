@@ -1,11 +1,12 @@
-import { useNavigation } from '@react-navigation/core'
 import React from 'react'
-import { Button, Image, Text, View, ActivityIndicator } from 'react-native';
-import { UseMovies } from '../hooks/UseMovies';
+import { View, ActivityIndicator, useWindowDimensions } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+
 import { MoviePoster } from '../components/MoviePoster';
+import { UseMovies } from '../hooks/UseMovies';
 
 export const HomeScreen = () => {
-
+    const { width  } = useWindowDimensions()
     const { peliculasEnCine, isLoading } = UseMovies()
 
     if (false) {
@@ -29,15 +30,18 @@ export const HomeScreen = () => {
 
     return (
 
-        <View>
-            {
-                peliculasEnCine.map((peli, idx) => {
+        <View
+        style={{
+            height:400
+        }}
+        >
+            <Carousel
+                data={peliculasEnCine}
+                renderItem={({ item }: any) => <MoviePoster movie={item} />}
+                sliderWidth={width}
+                itemWidth={300}
+            />
 
-                    return (
-                        <MoviePoster movie={peli} key={idx} />
-                    )
-                })
-            }
         </View>
 
     )
