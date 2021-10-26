@@ -1,12 +1,15 @@
 import React from 'react'
-import { View, ActivityIndicator, useWindowDimensions } from 'react-native';
+import { View, ActivityIndicator, Dimensions, Text } from 'react-native';
+
 import Carousel from 'react-native-snap-carousel';
 
 import { MoviePoster } from '../components/MoviePoster';
 import { UseMovies } from '../hooks/UseMovies';
 
+const { width } = Dimensions.get("window")
+
 export const HomeScreen = () => {
-    const { width  } = useWindowDimensions()
+
     const { peliculasEnCine, isLoading } = UseMovies()
 
     if (false) {
@@ -31,9 +34,9 @@ export const HomeScreen = () => {
     return (
 
         <View
-        style={{
-            height:400
-        }}
+            style={{
+                height: 400
+            }}
         >
             <Carousel
                 data={peliculasEnCine}
@@ -41,7 +44,7 @@ export const HomeScreen = () => {
                 sliderWidth={width}
                 itemWidth={300}
             />
-
+            
         </View>
 
     )
