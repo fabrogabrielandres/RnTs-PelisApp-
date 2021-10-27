@@ -1,11 +1,12 @@
 import React from 'react'
-import { View, ActivityIndicator, Dimensions, Text  } from 'react-native';
+import { View, ActivityIndicator, Dimensions, Text } from 'react-native';
 
 
 import { MoviePoster } from '../components/MoviePoster';
 import { UseMovies } from '../hooks/UseMovies';
 import Carousel from 'react-native-snap-carousel';
 import { FlatList } from 'react-native-gesture-handler';
+import HorizontalSlider from './HorizontalSlider';
 
 const { width } = Dimensions.get("window")
 
@@ -54,29 +55,7 @@ export const HomeScreen = () => {
                     itemWidth={300}
                 />
             </View>
-            <View
-                style={{
-                    height: 250
-                }}
-            >
-                <Text
-                    style={{
-                        fontSize: 30,
-                        fontWeight: "bold",
-                        textAlign: "center"
-                    }}
-                >
-                    En cine
-                </Text>
-                <FlatList
-                    data={peliculasEnCine}
-                    renderItem={({ item }: any) => <MoviePoster movie={item} height={200} width={140} />}
-                    keyExtractor={(item) => item.id.toString()}
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-
-                />
-            </View>
+            <HorizontalSlider movies={peliculasEnCine}/>
         </View>
 
     )
