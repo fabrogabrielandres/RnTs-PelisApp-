@@ -14,22 +14,23 @@ interface Props {
 
 const HorizontalSlider = ({ movies, title }: Props) => {
     // console.log(peliculasEnCine)
-    
+
     return (
         <View
             style={{
                 height: 250
             }}
         >
-            <Text
+
+            {title && <Text
                 style={{
                     fontSize: 30,
                     fontWeight: "bold",
                     textAlign: "center"
                 }}
             >
-                En cine
-            </Text>
+                {title}
+            </Text>}
             <FlatList
                 data={movies}
                 renderItem={({ item }: any) => <MoviePoster movie={item} height={200} width={140} />}

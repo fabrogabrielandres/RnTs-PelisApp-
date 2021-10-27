@@ -45,7 +45,6 @@ export const HomeScreen = () => {
             <View
                 style={{
                     height: 440,
-                    backgroundColor: "red"
                 }}
             >
                 <Carousel
@@ -53,9 +52,10 @@ export const HomeScreen = () => {
                     renderItem={({ item }: any) => <MoviePoster movie={item} />}
                     sliderWidth={width}
                     itemWidth={300}
+                    inactiveSlideOpacity={0.7}
                 />
             </View>
-            <HorizontalSlider movies={peliculasEnCine}/>
+            <HorizontalSlider movies={peliculasEnCine} title={"En Cine"}/>
         </View>
 
     )
